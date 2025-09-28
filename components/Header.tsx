@@ -228,7 +228,7 @@ const Header: React.FC = () => {
           <div className="flex items-center h-full">
             <div className="flex-shrink-0 flex items-center justify-center h-16 w-32 md:w-40">
               <img
-                src="./components/assets/logo.webp"
+                src="./assets/logo.webp"
                 alt="logo ferman"
                 className={`object-contain h-12 md:h-16 w-auto ${
                   isScrolled ? '' : 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'

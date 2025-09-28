@@ -9,11 +9,11 @@ const Hero: React.FC = () => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Usamos rutas relativas a la raíz del proyecto desplegado
+  // Usamos rutas relativas a la base URL configurada en Vite (/fermans/)
   const banners = [
-    './components/assets/Banner1.jpg',
-    './components/assets/Banner2.png',
-    './components/assets/Banner3.png',    
+    '/fermans/assets/banner1.jpg',
+    '/fermans/assets/banner2.png',
+    '/fermans/assets/banner3.png',    
   ];
 
   const nextSlide = useCallback(() => {
