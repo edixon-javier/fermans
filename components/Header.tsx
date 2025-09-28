@@ -149,7 +149,7 @@ const Header: React.FC = () => {
   // --- Desktop Menu Rendering ---
   const renderSubMenuColumn = (items: MenuItem[], level: number): React.ReactNode => (
     // STYLE CHANGE: Increased column width and added vertical padding for more breathing room.
-    <ul className="w-72 flex-shrink-0 py-4 px-2">
+    <ul className="w-80 flex-shrink-0 py-5 px-3">
       {items.map((item) => {
         const currentPath = activePath.slice(0, level + 1);
         currentPath[level] = item.label;
@@ -165,21 +165,18 @@ const Header: React.FC = () => {
               aria-expanded={hasChildren ? isActive : undefined}
               onMouseEnter={() => handlePathEnter(currentPath)}
               onFocus={() => handlePathEnter(currentPath)}
-              className={`flex items-center justify-between w-full text-left transition-colors rounded-md
-                ${/* STYLE CHANGE: Increased padding for better clickability and readability. */''}
-                px-4 py-3
-                ${/* STYLE CHANGE: Updated text styles for better hierarchy and accessible focus state. */''}
-                text-sm leading-snug
+              className={`flex items-center justify-between w-full text-left transition-all rounded-md
+                px-4 py-3.5
+                text-sm leading-tight
                 ${
                   isActive 
-                  ? 'bg-blue-50 text-blue-600 font-semibold' 
-                  // STYLE CHANGE: Using a lighter gray for non-active items and a lighter hover background.
-                  // Added explicit focus style for keyboard navigation accessibility.
-                  : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:bg-slate-100'
-                }`}
+                  ? 'bg-blue-100 text-blue-700 font-bold shadow-sm' 
+                  : 'text-slate-700 hover:bg-blue-50 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:bg-blue-50 focus:text-blue-600'
+                }
+                hover:shadow-sm transition-all duration-150`}
             >
               <span>{item.label}</span>
-              {hasChildren && <ChevronRightIcon className="h-4 w-4 text-slate-400" />}
+              {hasChildren && <ChevronRightIcon className="h-5 w-5 text-blue-400" />}
             </a>
           </li>
         );
@@ -206,11 +203,26 @@ const Header: React.FC = () => {
   const visibleColumns = getVisibleMenuColumns(activePath);
   
   // --- Common Styles ---
-  const navLinkClasses = `font-semibold px-3 py-2 rounded-md text-sm transition-colors duration-500 ease-in-out ${
+  const navLinkClasses = `font-bold px-4 py-3 rounded-md text-sm transition-all duration-500 ease-in-out ${
     isScrolled 
-      ? 'text-black hover:text-gray-700' 
-      : 'text-gray-900 bg-white/80 hover:bg-white/90 hover:text-black drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]'
+      ? 'text-[#1e40af] hover:text-[#1e3a8a] hover:bg-blue-50' 
+      : 'text-white bg-white/20 hover:bg-white/30 hover:text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
   }`;
+  
+  // Estilo adicional para el efecto hover de los enlaces
+  const navLinkHoverEffect = `hover:transform hover:translateY(-1px) hover:shadow-md`;
+  
+  // Estilo para la animación de pulse en el botón de WhatsApp
+  const whatsAppPulseAnimation = `hover:animate-pulse`;
+  
+  // Colores mejorados para la paleta
+  const colors = {
+    primary: '#1e40af',        // Azul primario más intenso
+    whatsapp: '#059669',       // Verde WhatsApp más saturado
+    textGray: '#374151',       // Gris texto con mayor contraste
+    accentCyan: '#06b6d4',     // Acento cyan
+    accentMint: '#10b981',     // Verde menta
+  };
 
   // --- Dynamic data for Mobile Menu ---
   const currentMobileMenuTitle = mobilePath.length > 0 ? mobilePath[mobilePath.length - 1].label : 'Menú';
@@ -220,8 +232,8 @@ const Header: React.FC = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out w-full ${
         isScrolled 
-          ? 'bg-white shadow-md py-2' 
-          : 'py-4 bg-gradient-to-b from-slate-800/80 to-slate-800/40 backdrop-blur-sm'
+          ? 'bg-white shadow-lg py-3' 
+          : 'py-5 bg-gradient-to-b from-slate-900/90 to-slate-800/60 backdrop-blur-md'
     }`}>
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -230,17 +242,17 @@ const Header: React.FC = () => {
               <img
                 src="./assets/logo.webp"
                 alt="logo ferman"
-                className={`object-contain h-12 md:h-16 w-auto ${
-                  isScrolled ? '' : 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
+                className={`object-contain h-12 md:h-16 w-auto transition-all duration-300 ${
+                  isScrolled ? '' : 'drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)]'
                 }`}
-                style={{ maxWidth: '100%' }}
+                style={{ maxWidth: '100%', filter: isScrolled ? 'none' : 'brightness(1.1)' }}
               />
             </div>
           </div>
 
           {/* --- Desktop Navigation --- */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-2">
+            <div className="ml-10 flex items-baseline space-x-3">  {/* Aumentado el espacio entre elementos */}
               <a href="#" className={navLinkClasses}>Nosotros</a>
               <div onMouseEnter={handleMenuEnter} onMouseLeave={handleMenuLeave}>
                 <button
@@ -254,7 +266,7 @@ const Header: React.FC = () => {
                   className={`${navLinkClasses} inline-flex items-center`}
                 >
                   <span>Categorías</span>
-                  <ChevronDownIcon className={`ml-1 h-4 w-4 transition-transform duration-200 ${isDesktopMenuOpen ? 'rotate-180' : ''}`}/>
+                  <ChevronDownIcon className={`ml-2 h-5 w-5 transition-transform duration-300 ${isDesktopMenuOpen ? 'rotate-180 text-blue-600' : ''}`}/>
                 </button>
                 <div
                   ref={menuPanelRef}
@@ -268,11 +280,11 @@ const Header: React.FC = () => {
                 >
                   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div
-                       // STYLE CHANGE: Replaced shadow-2xl with a more subtle shadow-lg for an elegant look.
-                      className={`bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 transition-transform duration-200 ease-out origin-top ${
-                        isDesktopMenuOpen ? 'scale-100' : 'scale-95'
+                      className={`bg-white rounded-lg shadow-xl ring-1 ring-blue-200 transition-all duration-300 ease-out origin-top ${
+                        isDesktopMenuOpen ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
                       }`}
                       role="menu"
+                      style={{ boxShadow: '0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)' }}
                     >
                       <div className="flex overflow-x-auto max-h-[75vh]">
                         {visibleColumns.map((col, index) => (
@@ -298,11 +310,11 @@ const Header: React.FC = () => {
           <div className="md:hidden">
             <button
               onClick={openMobileMenu}
-              className={`inline-flex items-center justify-center p-2 rounded-md transition-colors duration-500 ease-in-out ${
+              className={`inline-flex items-center justify-center p-3 rounded-md transition-all duration-500 ease-in-out ${
                 isScrolled 
-                  ? 'text-black hover:text-gray-700 hover:bg-black/10' 
-                  : 'text-gray-900 bg-white/80 hover:bg-white/90 hover:text-black drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]'
-              } focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#ECD7D1]`}
+                  ? 'text-[#1e40af] hover:text-[#1e3a8a] hover:bg-blue-50 hover:shadow-md' 
+                  : 'text-white bg-white/20 hover:bg-white/30 hover:shadow-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
+              } focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-300`}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
             >
@@ -322,19 +334,20 @@ const Header: React.FC = () => {
         />
         
         <div
-          className={`relative h-full w-4/5 max-w-sm bg-white shadow-xl transition-transform duration-300 ease-in-out flex flex-col ${
+          className={`relative h-full w-4/5 max-w-sm bg-white shadow-2xl transition-all duration-300 ease-in-out flex flex-col ${
             isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
+          style={{ boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }}
         >
           <div className="flex items-center justify-between p-4 border-b h-20 flex-shrink-0">
             {mobilePath.length > 0 ? (
-              <button onClick={handleMobileBack} className="flex items-center text-sm font-semibold text-slate-600 hover:text-blue-600 p-2 -ml-2">
+              <button onClick={handleMobileBack} className="flex items-center text-sm font-bold text-blue-600 hover:text-blue-800 hover:bg-blue-50 p-3 rounded-full transition-all -ml-2">
                 <ChevronLeftIcon className="w-5 h-5 mr-1" />
                 Volver
               </button>
             ) : <div />}
-            <h2 className="font-bold text-slate-800 text-lg">{currentMobileMenuTitle}</h2>
-            <button onClick={closeMobileMenu} className="p-2 -mr-2">
+            <h2 className="font-bold text-blue-800 text-xl" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}>{currentMobileMenuTitle}</h2>
+            <button onClick={closeMobileMenu} className="p-2 -mr-2 hover:bg-red-50 rounded-full transition-all duration-150 hover:text-red-500">
               <span className="sr-only">Cerrar menú</span>
               <XIcon className="w-6 h-6 text-slate-500" />
             </button>
@@ -356,10 +369,11 @@ const Header: React.FC = () => {
                       <li key={item.label}>
                         <button
                           onClick={() => handleMobileNavClick(item)}
-                          className="flex items-center justify-between w-full text-left px-4 py-4 text-slate-700 font-semibold hover:bg-slate-50"
+                          className="flex items-center justify-between w-full text-left px-5 py-5 text-slate-800 font-bold hover:bg-blue-50 hover:text-blue-700 transition-all duration-150"
+                          style={{ borderRadius: '8px', margin: '2px 0' }}
                         >
                           <span>{item.label}</span>
-                          {item.children && item.children.length > 0 && <ChevronRightIcon className="w-5 h-5 text-slate-400" />}
+                          {item.children && item.children.length > 0 && <ChevronRightIcon className="w-6 h-6 text-blue-500" />}
                         </button>
                       </li>
                     ))}

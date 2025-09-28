@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
               className="w-full h-full object-fill"
               loading={index === 0 ? "eager" : "lazy"}
             />
-            <div className="absolute inset-0 bg-black bg-opacity-10"></div>
+            <div className="absolute inset-0  bg-opacity-10"></div>
           </div>
         ))}
       </div>

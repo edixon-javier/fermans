@@ -1,16 +1,21 @@
-/* Paleta de colores personalizada para Fermans */
+/* Paleta de colores personalizada para Fermans - Actualizada con mayor contraste */
 :root {
-  /* Colores principales */
-  --color-primary: #004d7a; /* Azul corporativo principal, ligeramente más vibrante */
-  --color-primary-dark: #00375a; /* Variante oscura para hover */
-  --color-primary-light: #e6f0f6; /* Variante clara para fondos sutiles */
+  /* Colores principales - Actualizados para mejor contraste */
+  --color-primary: #1e40af; /* Azul intenso primario (actualizado) */
+  --color-primary-dark: #1e3a8a; /* Variante oscura para hover (actualizada) */
+  --color-primary-light: #dbeafe; /* Variante clara para fondos sutiles (actualizada) */
   
-  /* Colores de acento */
+  /* Colores de acento - Actualizados para mayor impacto */
   --color-accent: #f07336; /* Naranja cálido para acentos y llamadas a acción */
   --color-accent-hover: #e25718; /* Variante hover del naranja */
   --color-accent-light: #fff2ec; /* Fondo sutil para elementos destacados */
   
-  /* Colores neutros */
+  /* Nuevos colores de acento adicionales */
+  --color-cyan: #06b6d4; /* Acento cyan para hidratar */
+  --color-mint: #10b981; /* Verde menta para calmar */
+  --color-whatsapp: #059669; /* Verde WhatsApp más saturado */
+  
+  /* Colores neutros - Mejorados para mayor contraste */
   --color-white: #ffffff;
   --color-gray-50: #f9fafb;
   --color-gray-100: #f3f4f6;
@@ -30,16 +35,22 @@
   --color-fragrances: #b07cc5; /* Púrpura para "Fragancias" */
   --color-industrial: #7a8593; /* Gris azulado para "Industrial" */
   
-  /* Gradientes */
-  --gradient-hero: linear-gradient(to bottom right, var(--color-primary), #0074ba);
-  --gradient-card-hover: linear-gradient(to bottom, rgba(0,77,122,0.05), rgba(0,77,122,0.1));
-  --gradient-footer: linear-gradient(to bottom, #001e30, #003250);
+  /* Gradientes - Actualizados con colores más vibrantes */
+  --gradient-hero: linear-gradient(to bottom right, var(--color-primary), #3b82f6);
+  --gradient-card-hover: linear-gradient(to bottom, rgba(30,64,175,0.05), rgba(30,64,175,0.1));
+  --gradient-footer: linear-gradient(to bottom, #1e3a8a, #1e40af);
+  --gradient-button-primary: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  --gradient-button-primary-hover: linear-gradient(135deg, #2563eb, #1e40af);
   
-  /* Sombras */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --shadow-highlight: 0 0 15px rgba(240, 115, 54, 0.4);
+  /* Sombras - Mejoradas para mayor profundidad */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  --shadow-highlight: 0 0 20px rgba(240, 115, 54, 0.5);
+  --shadow-blue: 0 6px 20px rgba(59, 130, 246, 0.4);
+  --shadow-text: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 /* Estilos para categorías */
@@ -79,14 +90,19 @@
 
 /* Estilos para botones y elementos interactivos */
 .btn-primary {
-  background-color: var(--color-primary);
+  background: var(--gradient-button-primary);
   color: var(--color-white);
-  transition: all 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  box-shadow: var(--shadow-md);
+  font-weight: 600;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-dark);
-  transform: translateY(-1px);
+  background: var(--gradient-button-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-blue);
 }
 
 .btn-accent {
