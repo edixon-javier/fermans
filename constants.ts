@@ -8,10 +8,32 @@ export const CATEGORIES: Category[] = [
   { id: 'industrial', label: 'Industrial' },
 ];
 
-export const BRANDS: Brand[] = Array.from({ length: 10 }, (_, i) => ({
-  name: `Brand ${i + 1}`,
-  logo: `https://via.placeholder.com/150x60/E2E8F0/64748B?text=Logo`,
-}));
+export const BRANDS: Brand[] = [
+  {
+    name: 'Aliado 1',
+    logo: '/assets/aliado1.webp',
+  },
+  {
+    name: 'Aliado 2',
+    logo: '/assets/aliado2.webp',
+  },
+  {
+    name: 'Aliado 3',
+    logo: '/assets/aliado3.webp',
+  },
+  {
+    name: 'Aliado 4',
+    logo: '/assets/aliado4.webp',
+  },
+  {
+    name: 'Aliado 5',
+    logo: '/assets/aliado5.webp',
+  },
+  {
+    name: 'Aliado 6',
+    logo: '/assets/aliado6.webp',
+  },
+];
 
 export const PRODUCTS: Product[] = [
   // Cuidado Personal

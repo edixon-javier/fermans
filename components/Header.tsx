@@ -39,9 +39,14 @@ const Header: React.FC = () => {
   // Effect to handle header style change on scroll.
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      // Usar un umbral de 50px para una transición más suave
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
+    
+    // Forzar estado inicial a false (transparente)
+    setIsScrolled(false);
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -201,8 +206,8 @@ const Header: React.FC = () => {
   const visibleColumns = getVisibleMenuColumns(activePath);
   
   // --- Common Styles ---
-  const navLinkClasses = `font-semibold px-3 py-2 rounded-md text-sm hover:text-blue-600 transition-colors ${
-    isScrolled ? 'text-slate-700' : 'text-black'
+  const navLinkClasses = `font-semibold px-3 py-2 rounded-md text-sm transition-colors duration-500 ease-in-out ${
+    isScrolled ? 'text-black hover:text-gray-700' : 'text-white hover:text-gray-200'
   }`;
 
   // --- Dynamic data for Mobile Menu ---
@@ -211,13 +216,20 @@ const Header: React.FC = () => {
   const allPanels = [...mainPanelItems, ...mobilePath];
 
   return (
-    <header className={`sticky top-0 z-40 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md' : 'bg-transparent'
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out w-full ${
+        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
     }`}>
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <div className="flex-shrink-0">
-            <a href="/" className="text-2xl font-bold text-blue-600">Fehrmann S.A.</a>
+          <div className="flex items-center h-full">
+            <div className="flex-shrink-0 flex items-center justify-center h-16 w-32 md:w-40">
+              <img
+                src="/components/assets/logo.webp"
+                alt="logo ferman"
+                className="object-contain h-12 md:h-16 w-auto"
+                style={{ maxWidth: '100%' }}
+              />
+            </div>
           </div>
 
           {/* --- Desktop Navigation --- */}
@@ -280,7 +292,7 @@ const Header: React.FC = () => {
           <div className="md:hidden">
             <button
               onClick={openMobileMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+              className={`inline-flex items-center justify-center p-2 rounded-md transition-colors duration-500 ease-in-out ${isScrolled ? 'text-black hover:text-gray-700 hover:bg-black/10' : 'text-white hover:text-gray-200 hover:bg-white/10'} focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#ECD7D1]`}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
             >
