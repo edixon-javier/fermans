@@ -205,8 +205,8 @@ const Header: React.FC = () => {
   // --- Common Styles ---
   const navLinkClasses = `font-bold px-4 py-3 rounded-md text-sm transition-all duration-500 ease-in-out ${
     isScrolled 
-      ? 'text-[#1e40af] hover:text-[#1e3a8a] hover:bg-blue-50' 
-      : 'text-white bg-white/20 hover:bg-white/30 hover:text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
+      ? 'text-black hover:text-[#1e3a8a] hover:bg-blue-50' 
+      : 'text-black bg-white/20 hover:bg-white/30 hover:text-black drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
   }`;
   
   // Estilo adicional para el efecto hover de los enlaces
@@ -312,8 +312,8 @@ const Header: React.FC = () => {
               onClick={openMobileMenu}
               className={`inline-flex items-center justify-center p-3 rounded-md transition-all duration-500 ease-in-out ${
                 isScrolled 
-                  ? 'text-[#1e40af] hover:text-[#1e3a8a] hover:bg-blue-50 hover:shadow-md' 
-                  : 'text-white bg-white/20 hover:bg-white/30 hover:shadow-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
+                  ? 'text-black hover:text-[#1e3a8a] hover:bg-blue-50 hover:shadow-md' 
+                  : 'text-black bg-white/20 hover:bg-white/30 hover:shadow-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
               } focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-300`}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
