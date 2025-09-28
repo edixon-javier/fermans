@@ -73,10 +73,10 @@ const Hero: React.FC = () => {
             <img 
               src={banner} 
               alt={`Banner ${index + 1}`} 
-              className="w-full h-full object-fill"
+              className="w-full h-full object-cover"
               loading={index === 0 ? "eager" : "lazy"}
             />
-            <div className="absolute  bg-black bg-opacity-60"></div>
+            <div className="absolute inset-0 bg-black bg-opacity-[0.05]"></div>
           </div>
         ))}
       </div>

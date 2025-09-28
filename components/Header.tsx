@@ -207,7 +207,9 @@ const Header: React.FC = () => {
   
   // --- Common Styles ---
   const navLinkClasses = `font-semibold px-3 py-2 rounded-md text-sm transition-colors duration-500 ease-in-out ${
-    isScrolled ? 'text-black hover:text-gray-700' : 'text-white hover:text-gray-200'
+    isScrolled 
+      ? 'text-black hover:text-gray-700' 
+      : 'text-white hover:text-gray-200 drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]'
   }`;
 
   // --- Dynamic data for Mobile Menu ---
@@ -217,7 +219,9 @@ const Header: React.FC = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out w-full ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+        isScrolled 
+          ? 'bg-white shadow-md py-2' 
+          : 'py-4 bg-gradient-to-b from-black/50 to-transparent backdrop-blur-[2px]'
     }`}>
       <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
@@ -226,7 +230,9 @@ const Header: React.FC = () => {
               <img
                 src="/components/assets/logo.webp"
                 alt="logo ferman"
-                className="object-contain h-12 md:h-16 w-auto"
+                className={`object-contain h-12 md:h-16 w-auto ${
+                  isScrolled ? '' : 'drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
+                }`}
                 style={{ maxWidth: '100%' }}
               />
             </div>
@@ -292,7 +298,11 @@ const Header: React.FC = () => {
           <div className="md:hidden">
             <button
               onClick={openMobileMenu}
-              className={`inline-flex items-center justify-center p-2 rounded-md transition-colors duration-500 ease-in-out ${isScrolled ? 'text-black hover:text-gray-700 hover:bg-black/10' : 'text-white hover:text-gray-200 hover:bg-white/10'} focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#ECD7D1]`}
+              className={`inline-flex items-center justify-center p-2 rounded-md transition-colors duration-500 ease-in-out ${
+                isScrolled 
+                  ? 'text-black hover:text-gray-700 hover:bg-black/10' 
+                  : 'text-white hover:text-gray-200 hover:bg-white/10 drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]'
+              } focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#ECD7D1]`}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
             >
