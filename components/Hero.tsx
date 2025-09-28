@@ -10,9 +10,9 @@ const Hero: React.FC = () => {
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const banners = [
-    '/assets/Banner1.jpg',
-    '/assets/Banner2.png',
-    '/assets/Banner3.png',
+    './assets/Banner1.jpg',
+    './assets/Banner2.png',
+    './assets/Banner3.png',
   ];
 
   const nextSlide = useCallback(() => {

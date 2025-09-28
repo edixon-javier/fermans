@@ -11,27 +11,27 @@ export const CATEGORIES: Category[] = [
 export const BRANDS: Brand[] = [
   {
     name: 'Aliado 1',
-    logo: '/assets/aliado1.webp',
+    logo: './assets/aliado1.webp',
   },
   {
     name: 'Aliado 2',
-    logo: '/assets/aliado2.webp',
+    logo: './assets/aliado2.webp',
   },
   {
     name: 'Aliado 3',
-    logo: '/assets/aliado3.webp',
+    logo: './assets/aliado3.webp',
   },
   {
     name: 'Aliado 4',
-    logo: '/assets/aliado4.webp',
+    logo: './assets/aliado4.webp',
   },
   {
     name: 'Aliado 5',
-    logo: '/assets/aliado5.webp',
+    logo: './assets/aliado5.webp',
   },
   {
     name: 'Aliado 6',
-    logo: '/assets/aliado6.webp',
+    logo: './assets/aliado6.webp',
   },
 ];
 
