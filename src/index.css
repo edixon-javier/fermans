@@ -1,18 +1,37 @@
 /* Agregamos estilos de Tailwind CSS manualmente */
 @import "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css";
+@import "./theme.css";
 
-/* Using a CSS variable for the primary font to easily fallback */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@600;700&display=swap');
+/* Importamos fuentes con pesos adicionales para más opciones de diseño */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500;600;700;800&display=swap');
+
 body {
   font-family: 'Inter', sans-serif;
+  color: var(--color-gray-800);
+  background-color: var(--color-gray-50);
 }
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
+  color: var(--color-gray-900);
 }
+
+/* Animaciones */
 @keyframes scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 .animate-scroll {
   animation: scroll linear infinite;
+}
+
+/* Estilos de enlaces globales */
+a {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Personalización de selección de texto */
+::selection {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
 }

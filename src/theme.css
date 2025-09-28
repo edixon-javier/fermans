@@ -1,0 +1,124 @@
+/* Paleta de colores personalizada para Fermans */
+:root {
+  /* Colores principales */
+  --color-primary: #004d7a; /* Azul corporativo principal, ligeramente más vibrante */
+  --color-primary-dark: #00375a; /* Variante oscura para hover */
+  --color-primary-light: #e6f0f6; /* Variante clara para fondos sutiles */
+  
+  /* Colores de acento */
+  --color-accent: #f07336; /* Naranja cálido para acentos y llamadas a acción */
+  --color-accent-hover: #e25718; /* Variante hover del naranja */
+  --color-accent-light: #fff2ec; /* Fondo sutil para elementos destacados */
+  
+  /* Colores neutros */
+  --color-white: #ffffff;
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  
+  /* Colores para categorías específicas */
+  --color-personal-care: #5b7abb; /* Azul medio para "Cuidado Personal" */
+  --color-pharma: #5bc1bb; /* Turquesa para "Farmacéutico" */
+  --color-home-care: #70c07e; /* Verde para "Cuidado del Hogar" */
+  --color-fragrances: #b07cc5; /* Púrpura para "Fragancias" */
+  --color-industrial: #7a8593; /* Gris azulado para "Industrial" */
+  
+  /* Gradientes */
+  --gradient-hero: linear-gradient(to bottom right, var(--color-primary), #0074ba);
+  --gradient-card-hover: linear-gradient(to bottom, rgba(0,77,122,0.05), rgba(0,77,122,0.1));
+  --gradient-footer: linear-gradient(to bottom, #001e30, #003250);
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-highlight: 0 0 15px rgba(240, 115, 54, 0.4);
+}
+
+/* Estilos para categorías */
+.category-pill {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+
+.category-personal-care {
+  background-color: var(--color-personal-care);
+  color: white;
+}
+
+.category-pharma {
+  background-color: var(--color-pharma);
+  color: white;
+}
+
+.category-home-care {
+  background-color: var(--color-home-care);
+  color: white;
+}
+
+.category-fragrances {
+  background-color: var(--color-fragrances);
+  color: white;
+}
+
+.category-industrial {
+  background-color: var(--color-industrial);
+  color: white;
+}
+
+/* Estilos para botones y elementos interactivos */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-accent:hover {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.card-hover {
+  transition: all 0.3s ease-in-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Animaciones */
+@keyframes pulse-accent {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-accent {
+  animation: pulse-accent 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

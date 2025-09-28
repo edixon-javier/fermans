@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
               className="w-full h-full object-fill"
               loading={index === 0 ? "eager" : "lazy"}
             />
-            <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+            <div className="absolute inset-0 bg-black bg-opacity-10"></div>
           </div>
         ))}
       </div>
@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
             href="https://wa.me/56912345678" 
             target="_blank" 
             rel="noopener noreferrer"                 
-            className="bg-green-500 text-white font-bold py-4 px-10 rounded-full hover:bg-green-600 transition-all duration-300 text-lg shadow-xl hover:shadow-2xl hover:transform hover:scale-105 inline-flex items-center gap-2 backdrop-blur-sm bg-opacity-90"
+            className="bg-green-700 text-white font-bold py-4 px-10 rounded-full hover:bg-green-800 transition-all duration-300 text-lg shadow-xl hover:shadow-2xl hover:transform hover:scale-105 inline-flex items-center gap-2 backdrop-blur-sm bg-opacity-90"
           >
             <WhatsAppIcon className="w-6 h-6" />
             Contactar por WhatsApp
@@ -115,8 +115,8 @@ const Hero: React.FC = () => {
             }}
             className={`w-3 h-3 rounded-full transition-all duration-300 ${
               currentSlide === index 
-                ? 'bg-white w-6' 
-                : 'bg-white/50 hover:bg-white/80'
+                ? 'bg-slate-900 w-6' 
+                : 'bg-slate-700 hover:bg-slate-900'
             }`}
             aria-label={`Ir a diapositiva ${index + 1}`}
           />
@@ -125,7 +125,7 @@ const Hero: React.FC = () => {
 
       {/* Botones de navegación */}
       <button 
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-20 transition-all duration-300 backdrop-blur-sm"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-slate-900/70 hover:bg-slate-900/90 text-white p-2 rounded-full z-20 transition-all duration-300 backdrop-blur-sm"
         onClick={() => {
           prevSlide();
           pauseAutoplay();
@@ -135,7 +135,7 @@ const Hero: React.FC = () => {
         <ChevronLeftIcon className="w-6 h-6" />
       </button>
       <button 
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-20 transition-all duration-300 backdrop-blur-sm"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-slate-900/70 hover:bg-slate-900/90 text-white p-2 rounded-full z-20 transition-all duration-300 backdrop-blur-sm"
         onClick={() => {
           nextSlide();
           pauseAutoplay();
