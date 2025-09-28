@@ -11,9 +11,9 @@ const Hero: React.FC = () => {
 
   // Usamos rutas relativas a la raíz del proyecto desplegado
   const banners = [
-    'assets/Banner1.jpg',
-    'assets/Banner2.png',
-    'assets/Banner3.png',
+    './components/assets/Banner1.jpg',
+    './components/assets/Banner2.png',
+    './components/assets/Banner3.png',    
   ];
 
   const nextSlide = useCallback(() => {
@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
       clearTimeout(timeoutRef.current);
     }
     
-    // Reanudar después de 10 segundos de inactividad
+    // Reanudar después de 5 segundos de inactividad
     timeoutRef.current = setTimeout(() => {
       setIsPaused(false);
     }, 5000);
@@ -61,57 +61,46 @@ const Hero: React.FC = () => {
   }, [isPaused, nextSlide]);
 
   return (
-    <div className="relative bg-slate-900 flex flex-col justify-center items-center w-full min-h-[85vh] overflow-hidden">
+    <div style={{ height: '80vh' }} className="relative bg-slate-900 flex flex-col justify-center items-center w-full overflow-hidden">
       {/* Carrusel de imágenes */}
-      <div className="absolute top-0 left-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full">
         {banners.map((banner, index) => (
           <div 
             key={index}
-            className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
               currentSlide === index ? 'opacity-100' : 'opacity-0'
             }`}
           >
             <img 
               src={banner} 
               alt={`Banner ${index + 1}`} 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-fill"
               loading={index === 0 ? "eager" : "lazy"}
             />
-            <div className="absolute inset-0 bg-black bg-opacity-[0.05]"></div>
+            <div className="absolute inset-0 bg-black bg-opacity-30"></div>
           </div>
         ))}
       </div>
 
       {/* Contenido superpuesto */}
-      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 z-10 py-16">
-        <div className="items-center flex flex-wrap">
-          <div className="w-full lg:w-8/12 mx-auto text-center">
-            {/* <div className="text-white">
-              <h1 className="font-bold text-4xl md:text-5xl lg:text-6xl mb-4">
-                Insumos especializados — Para formuladores que exigen resultados reproducibles
-              </h1>
-              <p className="mt-4 text-lg lg:text-xl text-slate-300">
-                Ingredientes con respaldo técnico, soluciones sostenibles y representantes internacionales. Encuentre, compare y descargue fichas técnicas en segundos.
-              </p>
-            </div> */}
-            <div className="absolute bottom-[-14rem] left-1/2 -translate-x-1/2 flex flex-col sm:flex-row items-center justify-center gap-4 z-20">
-              <a
-                href="#search-bar"
-                className="bg-blue-600 text-white font-bold py-4 px-10 rounded-full hover:bg-blue-700 transition-all duration-300 text-lg shadow-xl hover:shadow-2xl hover:transform hover:scale-105 backdrop-blur-sm bg-opacity-90"
-              >
-                Buscar productos
-              </a>
-              <a 
-                href="https://wa.me/56912345678" 
-                target="_blank" 
-                rel="noopener noreferrer"                 
-                className="bg-green-500 text-white font-bold py-4 px-10 rounded-full hover:bg-green-600 transition-all duration-300 text-lg shadow-xl hover:shadow-2xl hover:transform hover:scale-105 inline-flex items-center gap-2 backdrop-blur-sm bg-opacity-90"
-              >
-                <WhatsAppIcon className="w-6 h-6" />
-                Contactar por WhatsApp
-              </a>
-            </div>
-          </div>
+      <div className="relative z-10 flex flex-col items-center justify-end h-full px-4 pb-10 sm:px-6 lg:px-8">
+        {/* Botones de acción centrados */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <a
+            href="#search-bar"
+            className="bg-blue-600 text-white font-bold py-4 px-10 rounded-full hover:bg-blue-700 transition-all duration-300 text-lg shadow-xl hover:shadow-2xl hover:transform hover:scale-105 backdrop-blur-sm bg-opacity-90"
+          >
+            Buscar productos
+          </a>
+          <a 
+            href="https://wa.me/56912345678" 
+            target="_blank" 
+            rel="noopener noreferrer"                 
+            className="bg-green-500 text-white font-bold py-4 px-10 rounded-full hover:bg-green-600 transition-all duration-300 text-lg shadow-xl hover:shadow-2xl hover:transform hover:scale-105 inline-flex items-center gap-2 backdrop-blur-sm bg-opacity-90"
+          >
+            <WhatsAppIcon className="w-6 h-6" />
+            Contactar por WhatsApp
+          </a>
         </div>
       </div>
 
@@ -124,7 +113,7 @@ const Hero: React.FC = () => {
               goToSlide(index);
               pauseAutoplay();
             }}
-            className={`w-3 h-3 rounded-full transition-all ${
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
               currentSlide === index 
                 ? 'bg-white w-6' 
                 : 'bg-white/50 hover:bg-white/80'
@@ -136,7 +125,7 @@ const Hero: React.FC = () => {
 
       {/* Botones de navegación */}
       <button 
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-20 transition-all backdrop-blur-sm"
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-20 transition-all duration-300 backdrop-blur-sm"
         onClick={() => {
           prevSlide();
           pauseAutoplay();
@@ -146,7 +135,7 @@ const Hero: React.FC = () => {
         <ChevronLeftIcon className="w-6 h-6" />
       </button>
       <button 
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-20 transition-all backdrop-blur-sm"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full z-20 transition-all duration-300 backdrop-blur-sm"
         onClick={() => {
           nextSlide();
           pauseAutoplay();
