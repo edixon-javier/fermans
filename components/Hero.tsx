@@ -9,10 +9,11 @@ const Hero: React.FC = () => {
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  // Usamos rutas relativas a la raíz del proyecto desplegado
   const banners = [
-    './assets/Banner1.jpg',
-    './assets/Banner2.png',
-    './assets/Banner3.png',
+    'assets/Banner1.jpg',
+    'assets/Banner2.png',
+    'assets/Banner3.png',
   ];
 
   const nextSlide = useCallback(() => {
